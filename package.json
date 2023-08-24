@@ -1,0 +1,24 @@
+{
+  "name": "proyecto-node",
+  "version": "1.0.0",
+  "description": "Primer projecto con node conceptos basicos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Curso",
+    "Node"
+  ],
+  "author": "Juan Manuel Cruz - JuanCruzDev",
+  "license": "ISC",
+  "dependencies": {
+    "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
+    "standard": "^17.1.0"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}
