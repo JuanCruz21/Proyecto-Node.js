@@ -4,7 +4,8 @@
   "description": "Primer projecto con node conceptos basicos",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node routting.js"
   },
   "keywords": [
     "Curso",
@@ -13,6 +14,7 @@
   "author": "Juan Manuel Cruz - JuanCruzDev",
   "license": "ISC",
   "dependencies": {
+    "express": "4.18.2",
     "picocolors": "^1.0.0"
   },
   "devDependencies": {
