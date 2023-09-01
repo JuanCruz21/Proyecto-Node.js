@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
-const dittoJson = require('./pokemon/ditto.json')
+const dittoJson = require('../pokemon/ditto.json')
+
 app.disable('x-powered-by')
+
+app.use(express.json())
 
 const url = process.env.PORT ?? 1234
 
@@ -12,26 +15,19 @@ app.get('/', (req, res) => {
 app.get('/Contacto', (req, res) => {
   res.send('<h1>Contacto</h1>')
 })
-app.post('/pokemon', (req, res) => {
-  let body = ''
-  req.on('data', chunk => {
-    body += chunk.toString()
-  })
 
-  req.on('end', () => {
-    const data = JSON.parse(body)
-    data.time = Date.now()
-    res.json(data)
-  })
+app.post('/pokemon', (req, res) => {
+  res.status(201).json(req.body)
 })
 
 app.get('/pokemon/ditto', (req, res) => {
   res.json(dittoJson)
 })
-app.listen(url, () => {
-  console.log(`server listening on port http://localhost:${url}`)
-})
 
 app.use((req, res) => {
   res.status(404).send('<h1>Error 404</h1>')
+})
+
+app.listen(url, (req, res) => {
+  console.log(`server listening on port http://localhost:${url}`)
 })

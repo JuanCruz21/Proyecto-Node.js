@@ -1,12 +1,5 @@
-GET http://localhost:1234/pokemon/ditto
-###
-POST http://localhost:1234/pokemon
-Content-Type: application/json
-
-{
-    "name": "ditto",
-    "type": "normal",
-    "moves": [
-        "transform"
-    ]
-}
+### Recuperar todas las peliculas
+GET http://localhost:1234/movies
+### Recuperar 
+GET http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+### Recuperar todas las peliculas
