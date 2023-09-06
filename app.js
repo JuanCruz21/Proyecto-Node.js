@@ -1,14 +1,14 @@
 const express = require('express')
 const movies = require('./movies/movies.json')
 const crypto = require('node:crypto')
+const cors = require('cors')
 const app = express()
 const { validateMovie, validatePartialMovie } = require('./Movies')
 app.disable('x-powered-by')
-
+app.use(cors())
 app.use(express.json())
-
 app.get('/movies', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*')
+  // res.header('Access-Control-Allow-Origin', '*')
   const { genre } = req.query
   if (genre) {
     const filterMovies = movies.filter(
@@ -60,9 +60,18 @@ app.patch('/movies/:id', (req, res) => {
   movies[movieIndex] = updateMovie
 
   return res.json(updateMovie)
-}
+})
 
-)
+app.delete('/movies/:id', (req, res) => {
+  const { id } = req.params
+  const movieIndex = movies.findIndex(movie => movie.id === id)
+  if (movieIndex === -1) {
+    return res.status(404).json({ message: 'Movie not found' })
+  }
+
+  movies.splice(movieIndex, 1)
+  return res.json({ message: 'Movie not found' })
+})
 
 const Puerto = process.env.PORT ?? 1234
 app.listen(Puerto, () => {

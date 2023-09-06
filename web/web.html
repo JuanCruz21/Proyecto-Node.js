@@ -33,9 +33,26 @@
                 </article>
                 `
             }).join('')
-            //document.querySelector('#app').innerHTML += `<div id='list'>${html}<div>`
-                document.querySelector('body').innerHTML += `<main>${html}</main>`;
+            document.querySelector('body').innerHTML += `<main>${html}</main>`;
+
+            document.addEventListener('click', e => {
+                if (e.target.matches('button')){
+                const article = e.target.closest('article')
+                const id = article.dataset.id
+
+                fetch(`http://localhost:1234/movies/${id}`,{
+                    method: 'DELETE'
+                })
+                
+                .then(res => {
+                    if (res.ok){
+                        article.remove()
+                    }   
+                })
+            }
         })
+        })
+        
     </script>
 </body>
 </html>
